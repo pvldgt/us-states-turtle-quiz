@@ -1,7 +1,7 @@
 # us-states-turtle-quiz
 This quiz game was developed following the steps
 outlined in the "100 days of code" course on Udemy
-https://www.udemy.com/home/my-courses/learning/
+https://www.udemy.com/course/100-days-of-code/
 
 The game is build on Python using the turtle graphics library. 
 
