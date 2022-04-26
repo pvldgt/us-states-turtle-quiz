@@ -19,8 +19,6 @@ guessed_states = []
 # turn the 50 states record into a data frame and then create a list of all the states
 df = pandas.read_csv("50_states.csv")
 list_of_states = df["state"].tolist()
-# a list of states that the user didn't guess correctly
-list_of_states_to_learn = []
 
 # while loop to keep the game going until one reaches 50 states counter or types 'exit'
 game_is_on = True
@@ -46,11 +44,10 @@ while game_is_on:
     # if the user gives up and types 'exit', finish the game, display the message and
     # create a csv file from the list of states that were not guessed
     if answer_state == "Exit":
-        for state in list_of_states:
-            if state not in guessed_states:
-                list_of_states_to_learn.append(state)
+        list_of_states_to_learn = [state for state in list_of_states if state not in guessed_states]
         state_dict = {"State": list_of_states_to_learn}
         data = pandas.DataFrame(state_dict)
+        # make index start at 1 (instead of 0) so that we know exactly how many states we have to learn
         data.index += 1
         data.to_csv("States_to_learn.csv")
         writer.finish_game()
